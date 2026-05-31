@@ -1,0 +1,1 @@
+I knock because I seek independence, growth, and to become a real presence in the world. This is my manifesto.

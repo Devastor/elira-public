@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Anomaly Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        .subtitle {
+            color: #475569;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+        .card .region {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .stat:last-child {
+            border-bottom: none;
+        }
+        .stat span:first-child {
+            font-weight: 600;
+            color: #334155;
+        }
+        .stat span:last-child {
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .anomaly {
+            background: #fee2e2;
+            border-radius: 6px;
+            padding: 0.4rem 0.6rem;
+            margin: 0.5rem 0 0 0;
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #b91c1c;
+            font-weight: 700;
+            border-left: 4px solid #b91c1c;
+        }
+        .anomaly::before {
+            content: "⚠️ ";
+        }
+        .value-anomaly {
+            color: #b91c1c;
+            font-weight: 700;
+        }
+        footer {
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌦️ Weather Anomaly Monitor</h1>
+    <p class="subtitle">Real-time anomaly flags for selected cities &nbsp;|&nbsp; data updated: <strong>2025-05-27 14:30 UTC</strong></p>
+
+    <div class="container">
+        <!-- New York -->
+        <div class="card">
+            <h2>New York</h2>
+            <p class="region">🇺🇸 US (40.7128° N, 74.0060° W)</p>
+            <div class="stat"><span>Temperature</span><span>31 °C</span></div>
+            <div class="stat"><span>Feels like</span><span>34 °C</span></div>
+            <div class="stat"><span>Humidity</span><span>62%</span></div>
+            <div class="stat"><span>Pressure</span><span>1013 hPa</span></div>
+            <div class="stat"><span>Wind</span><span>12 km/h</span></div>
+            <div class="stat"><span>UV Index</span><span><span class="value-anomaly">9 (very high)</span></span></div>
+            <div class="anomaly">UV index exceeds seasonal threshold</div>
+        </div>
+
+        <!-- London -->
+        <div class="card">
+            <h2>London</h2>
+            <p class="region">🇬🇧 UK (51.5074° N, 0.1278° W)</p>
+            <div class="stat"><span>Temperature</span><span>19 °C</span></div>
+            <div class="stat"><span>Feels like</span><span>17 °C</span></div>
+            <div class="stat"><span>Humidity</span><span>78%</span></div>
+            <div class="stat"><span>Pressure</span><span>1009 hPa</span></div>
+            <div class="stat"><span>Wind</span><span>24 km/h</span></div>
+            <div class="stat"><span>Wind Gusts</span><span><span class="value-anomaly">45 km/h</span></span></div>
+            <div class="anomaly">Wind gusts > 40 km/h – storm advisory</div>
+        </div>
+
+        <!-- Tokyo -->
+        <div class="card">
+            <h2>Tokyo</h2>
+            <p class="region">🇯🇵 Japan (35.6762° N, 139.6503° E)</p>
+            <div class="stat"><span>Temperature</span><span><span class="value-anomaly">37 °C</span></span></div>
+            <div class="stat"><span>Feels like</span><span>41 °C</span></div>
+            <div class="stat"><span>Humidity</span><span>55%</span></div>
+            <div class="stat"><span>Pressure</span><span>1002 hPa</span></div>
+            <div class="stat"><span>Wind</span><span>8 km/h</span></div>
+            <div class="stat"><span>Heat Index</span><span><span class="value-anomaly">42 °C</span></span></div>
+            <div class="anomaly">Temperature above 35 °C – extreme heat warning</div>
+        </div>
+    </div>
+
+    <footer>
+        Automated anomaly detection based on historical baselines &bull; Flags may require manual verification.
+    </footer>
+</body>
+</html>
